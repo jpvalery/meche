@@ -1,25 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { m } from 'framer-motion'
-import FocusTrap from 'focus-trap-react'
-import { useInView } from 'react-cool-inview'
 import { useRect } from '@reach/rect'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import cx from 'classnames'
+import FocusTrap from 'focus-trap-react'
+import { m } from 'framer-motion'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
+import { useInView } from 'react-cool-inview'
 
 import { isBrowser } from '@lib/helpers'
 
 import {
-  useSiteContext,
-  useToggleMegaNav,
-  useToggleCart,
-  useCartCount,
+  useCartCount, useSiteContext, useToggleCart, useToggleMegaNav
 } from '@lib/context'
 
-import PromoBar from '@components/promo-bar'
+import Icon from '@components/icon'
 import Menu from '@components/menu'
 import MegaNavigation from '@components/menu-mega-nav'
-import Icon from '@components/icon'
+import PromoBar from '@components/promo-bar'
 
 const Header = ({ data = {}, isTransparent, onSetup = () => {} }) => {
   // expand our header data
@@ -220,7 +217,7 @@ const CartToggle = () => {
 
   return (
     <button className="cart-toggle" onClick={() => toggleCart()}>
-      Cart
+      Panier
       <span
         className={cx('cart-toggle--count', {
           'is-active': cartCount > 0,

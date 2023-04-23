@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { m } from 'framer-motion'
-import cx from 'classnames'
+import { useEffect, useState } from 'react'
 
 import { centsToPrice } from '@lib/helpers'
 
 import {
-  useSiteContext,
-  useCartTotals,
   useCartCount,
-  useCartItems,
-  useCheckout,
-  useToggleCart,
+  useCartItems, useCartTotals, useCheckout, useSiteContext, useToggleCart
 } from '@lib/context'
 
 import CartItem from '@components/cart-item'
@@ -67,30 +63,30 @@ const Cart = ({ data }) => {
       >
         <m.div
           initial="hide"
-          animate={isCartOpen ? 'show' : 'hide'}
+          animate={isCartOpen ? "show" : "hide"}
           variants={{
             show: {
-              x: '0%',
+              x: "0%",
             },
             hide: {
-              x: '100%',
+              x: "100%",
             },
           }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           onKeyDown={(e) => handleKeyDown(e)}
-          onAnimationComplete={(v) => setHasFocus(v === 'show')}
-          className={cx('cart is-inverted', {
-            'is-active': isCartOpen,
-            'is-updating': isUpdating,
+          onAnimationComplete={(v) => setHasFocus(v === "show")}
+          className={cx("cart is-inverted", {
+            "is-active": isCartOpen,
+            "is-updating": isUpdating,
           })}
         >
           <div className="cart--inner">
             <div className="cart--header">
               <div className="cart--title">
-                Your Cart <span className="cart--count">{cartCount}</span>
+                Votre panier <span className="cart--count">{cartCount}</span>
               </div>
               <button className="cart-toggle" onClick={() => toggleCart(false)}>
-                Done
+                Fini
               </button>
             </div>
 
@@ -105,8 +101,8 @@ const Cart = ({ data }) => {
             {lineItems?.length > 0 && (
               <div className="cart--footer">
                 <div className="cart--subtotal">
-                  <span>Subtotal</span>
-                  <span>${centsToPrice(subTotal)}</span>
+                  <span>Sous-total</span>
+                  <span>{centsToPrice(subTotal)}$</span>
                 </div>
 
                 <a
@@ -114,7 +110,7 @@ const Cart = ({ data }) => {
                   onClick={(e) => goToCheckout(e)}
                   className="btn is-primary is-inverted is-large is-block"
                 >
-                  {isUpdating ? 'Updating...' : 'Checkout'}
+                  {isUpdating ? "Mise à jour..." : "Payer"}
                 </a>
 
                 {shop.cartMessage && (
@@ -127,13 +123,13 @@ const Cart = ({ data }) => {
       </FocusTrap>
 
       <div
-        className={cx('cart--backdrop', {
-          'is-active': isCartOpen,
+        className={cx("cart--backdrop", {
+          "is-active": isCartOpen,
         })}
         onClick={() => toggleCart(false)}
       />
     </>
-  )
+  );
 }
 
 const CartItems = ({ items }) => {
@@ -148,7 +144,7 @@ const CartItems = ({ items }) => {
 
 const EmptyCart = () => (
   <div className="cart--empty">
-    <p>Your cart is empty</p>
+    <p>Votre panier est vide</p>
   </div>
 )
 
