@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { m, AnimatePresence } from 'framer-motion'
 import cx from 'classnames'
+import { AnimatePresence, m } from 'framer-motion'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 import { fadeAnim } from '@lib/animate'
 
@@ -10,7 +10,7 @@ import Icon from '@components/icon'
 
 const Newsletter = ({ data = {} }) => {
   // Extract our module data
-  const { id, klaviyoListID, terms, submit, successMsg, errorMsg } = data
+  const { id, terms, submit, successMsg, errorMsg } = data
 
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -38,20 +38,16 @@ const Newsletter = ({ data = {} }) => {
   const onSubmit = (data, e) => {
     e.preventDefault()
 
-    // set an error if there's no Klaviyo list supplied...
-    if (!klaviyoListID) setError(true)
-
     // ...and bail out if terms active and not agreed to (or just Klaviyo list is missing)
-    if ((!hasAgreed && terms && !klaviyoListID) || !klaviyoListID) return
+    if (!hasAgreed && terms) return
 
     setSubmitting(true)
     setError(false)
 
-    fetch('/api/klaviyo/newsletter-join', {
+    fetch('/api/cio/newsletter', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        listID: klaviyoListID,
         ...data,
       }),
     })
@@ -68,10 +64,10 @@ const Newsletter = ({ data = {} }) => {
   }
 
   const email = register('email', {
-    required: 'This field is required.',
+    required: 'Ça nous prend une adresse courriel.',
     pattern: {
       value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-      message: 'Invalid email address.',
+      message: `Ça a pas l'air d'une adress courriel`,
     },
   })
 
@@ -97,12 +93,13 @@ const Newsletter = ({ data = {} }) => {
             <div className="control--group is-inline is-clean">
               <div className={`control${errors?.email ? ' has-error' : ''}`}>
                 <label htmlFor={`email-${id}`} className="control--label">
-                  Email Address
+                  Ton courriel
                 </label>
                 <input
                   id={`email-${id}`}
                   name="email"
                   type="email"
+                  placeholder="Ton courriel"
                   inputMode="email"
                   autoComplete="email"
                   ref={email.ref}
@@ -173,7 +170,7 @@ const Newsletter = ({ data = {} }) => {
               {successMsg ? (
                 <BlockContent blocks={successMsg} />
               ) : (
-                <h2>Success!</h2>
+                <h2>Bien reçu!</h2>
               )}
             </div>
           </m.div>
@@ -192,7 +189,7 @@ const Newsletter = ({ data = {} }) => {
               {errorMsg ? <BlockContent blocks={errorMsg} /> : <h2>Error!</h2>}
               <p className="form--error-reset">
                 <button className="btn" onClick={(e) => resetForm(e)}>
-                  try again
+                  Essayons encore
                 </button>
               </p>
             </div>
