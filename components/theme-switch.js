@@ -1,15 +1,14 @@
-import React from 'react'
-import { useTheme } from 'next-themes'
+import { useTheme } from 'next-themes';
 
-import { useHasMounted } from '@lib/helpers'
+import { useHasMounted } from '@lib/helpers';
 
-import Swatch from '@components/swatch'
+import Swatch from '@components/swatch';
 
 const themes = [
-  { title: 'Light Mode', name: 'light', color: { hex: '#f4f4f0' } },
-  { title: 'Dark Mode', name: 'dark', color: { hex: '#000000' } },
-  { title: 'Metal Mode', name: 'metal', color: { hex: '#FB1B15' } },
-]
+  { title: "Mode Cire (light)", name: "light", color: { hex: "#FFFBEB" } },
+  { title: "Mode Meche (dark)", name: "dark", color: { hex: "#0C0A09" } },
+  { title: "Mode Braise (rouge)", name: "metal", color: { hex: "#B91C1C" } },
+];
 
 const ThemeSwitch = () => {
   const hasMounted = useHasMounted()
