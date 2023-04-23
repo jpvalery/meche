@@ -1,12 +1,9 @@
-import React from 'react'
 
-import BlockContent from '@components/block-content'
+import BlockContent from '@components/block-content';
 import {
-  ProductGallery,
-  ProductPrice,
-  ProductForm,
-  ProductActions,
-} from '@components/product'
+  ProductActions, ProductForm, ProductGallery,
+  ProductPrice
+} from '@components/product';
 
 const ProductHero = ({ product, activeVariant, onVariantChange }) => {
   return (
@@ -25,30 +22,32 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
           <div className="product--info">
             <div className="product--header">
               <div className="product--title">
-                {activeVariant && (
-                  <div className="product--variant">
-                    {activeVariant.title}
-
-                    {activeVariant.lowStock && activeVariant.inStock && (
-                      <span className="label is-active">Low Stock</span>
-                    )}
-
-                    {!activeVariant.inStock && (
-                      <span className="label is-secondary is-active">
-                        Out of Stock
-                      </span>
-                    )}
-                  </div>
-                )}
                 <h1 className="product--name">{product.title}</h1>
               </div>
 
-              <ProductPrice
-                price={activeVariant?.price || product.price}
-                comparePrice={
-                  activeVariant?.comparePrice || product.comparePrice
-                }
-              />
+              <div className="product--price-stock">
+                <div className="flex items-center mt-4">
+                  {activeVariant.inStock && !activeVariant.lowStock && (
+                    <span className="label">In Stock</span>
+                  )}
+                  {activeVariant.lowStock && (
+                    <span className="label is-active">Low Stock</span>
+                  )}
+
+                  {!activeVariant.inStock && (
+                    <span className="label is-secondary is-active">
+                      Out of Stock
+                    </span>
+                  )}
+                </div>
+
+                <ProductPrice
+                  price={activeVariant?.price || product.price}
+                  comparePrice={
+                    activeVariant?.comparePrice || product.comparePrice
+                  }
+                />
+              </div>
             </div>
 
             {product.description && (
@@ -72,7 +71,7 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 export default ProductHero

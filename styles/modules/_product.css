@@ -22,13 +22,13 @@
   }
 
   &--header {
-    @apply flex mb-32 pb-8 border-b;
+    @apply flex mb-32 pb-8 border-b items-center justify-between;
 
     .price {
       @apply flex flex-col items-end mt-auto ml-auto;
 
       &--current {
-        @apply text-20 leading-150 font-semibold;
+        @apply text-28 leading-150 font-semibold;
       }
 
       &--discount {
@@ -51,6 +51,10 @@
     .label {
       @apply flex-shrink-0 -my-4 scale-90;
     }
+  }
+
+    &--price-stock {
+    @apply flex items-center justify-end;
   }
 
   &--options {
