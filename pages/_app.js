@@ -1,24 +1,24 @@
-import React, { useEffect, useMemo } from 'react'
-import Router from 'next/router'
+import { AnimatePresence, domAnimation, LazyMotion } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
-import { LazyMotion, domAnimation, AnimatePresence } from 'framer-motion'
+import Router from 'next/router'
+import { useEffect, useMemo } from 'react'
 
-import '../styles/tailwind.css'
 import '../styles/app.css'
+import '../styles/tailwind.css'
 
-import { isBrowser, useScrollRestoration } from '@lib/helpers'
 import { pageTransitionSpeed } from '@lib/animate'
+import { isBrowser, useScrollRestoration } from '@lib/helpers'
 
 import {
   SiteContextProvider,
   useSiteContext,
-  useTogglePageTransition,
+  useTogglePageTransition
 } from '@lib/context'
 
 import Cart from '@components/cart'
 
 // Console Credits
-if (isBrowser) {
+/* if (isBrowser) {
   console.groupCollapsed(
     '%c💀 Site Credits',
     'display:block;padding:0.125em 1em;font-family:courier;font-size:14px;font-weight:bold;line-height:2;text-transform:uppercase;background:black;color:white;'
@@ -32,7 +32,7 @@ if (isBrowser) {
     'display:block;font-family:courier;font-size:12px;font-weight:bold;line-height:1;color:black;'
   )
   console.groupEnd()
-}
+} */
 
 const Site = ({ Component, pageProps, router }) => {
   const togglePageTransition = useTogglePageTransition()
