@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
 import cx from 'classnames'
+import { useState } from 'react'
 
 import { ConditionalWrapper } from '@lib/helpers'
 
-import Drawer from '@components/drawer'
 import Accordion from '@components/accordion'
-import Swatch from '@components/swatch'
+import Drawer from '@components/drawer'
 import Icon from '@components/icon'
+import Swatch from '@components/swatch'
 
 const CollectionFilter = ({
   filterGroups,
@@ -30,7 +30,7 @@ const CollectionFilter = ({
     <>
       <div className="collection--filter-actions">
         <button onClick={() => setFiltersOpen(true)} className="filters-toggle">
-          Show Filters
+          useFilterAndSort
           {filtersTotal > 0 && (
             <span className="filters-toggle--count">{filtersTotal}</span>
           )}
@@ -41,7 +41,7 @@ const CollectionFilter = ({
             onClick={() => handleClearFilters()}
             className="filters-reset btn is-small"
           >
-            Clear All
+           Tout effacer
           </button>
         )}
       </div>
@@ -55,7 +55,7 @@ const CollectionFilter = ({
         {/* Filters Header */}
         <div className="filters--header">
           <div className="filters--title">
-            Filters
+            Filtres
             {filtersTotal > 0 && (
               <span className="filters--count">{filtersTotal}</span>
             )}
@@ -70,7 +70,7 @@ const CollectionFilter = ({
                 }}
                 className="filters-reset btn is-small"
               >
-                Clear All
+                Tout effacer
               </button>
             )}
 
@@ -78,7 +78,7 @@ const CollectionFilter = ({
               className="filters-close"
               onClick={() => setFiltersOpen(false)}
             >
-              Done
+              Fini
             </button>
           </div>
         </div>

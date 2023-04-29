@@ -1,22 +1,19 @@
-import React, { useState, useRef, useMemo, useCallback, useEffect } from 'react'
 import cx from 'classnames'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import {
-  useParams,
-  usePrevious,
-  cartesian,
-  sortAsc,
-  sortDesc,
-  clampRange,
+  cartesian, clampRange, sortAsc,
+  sortDesc, useParams,
+  usePrevious
 } from '@lib/helpers'
 
 import { useSiteContext } from '@lib/context'
 
+import BlockContent from '@components/block-content'
 import CollectionFilter from '@components/collection-filter'
 import CollectionFilterChips from '@components/collection-filter-chips'
 import CollectionSort from '@components/collection-sort'
 import ProductCard from '@components/product-card'
-import BlockContent from '@components/block-content'
 
 const Collection = ({ data = {} }) => {
   const { title, products, filter, sort, paginationLimit, noFilterResults } =
@@ -229,7 +226,7 @@ const Collection = ({ data = {} }) => {
                   )
                 }
               >
-                Clear Filters
+                Effacer les filtres
               </button>
             </div>
           )}
@@ -238,10 +235,10 @@ const Collection = ({ data = {} }) => {
         {hasPagination && (
           <div className="collection--pagination">
             <button className="btn is-large" onClick={loadMore}>
-              Load More
+              Charger plus
               <span className="sr-only">
                 {' '}
-                products from the "{title}" collection
+                produits dans la collection "{title}"
               </span>
             </button>
           </div>
@@ -250,8 +247,8 @@ const Collection = ({ data = {} }) => {
         {orderedProducts?.length > 0 && (
           <div className="collection--count">
             <p aria-live="polite" role="status" aria-atomic="true">
-              Showing {paginatedProducts.length} of {orderedProducts.length}{' '}
-              products
+              {paginatedProducts.length} de {orderedProducts.length}{' '}
+              produits
             </p>
           </div>
         )}

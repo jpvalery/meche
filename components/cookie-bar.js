@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { AnimatePresence, m } from 'framer-motion'
 import FocusTrap from 'focus-trap-react'
+import { AnimatePresence, m } from 'framer-motion'
 import Cookies from 'js-cookie'
+import React, { useEffect, useState } from 'react'
 
 import { useHasMounted } from '@lib/helpers'
 
@@ -74,7 +74,7 @@ const CookieBar = React.memo(({ data = {} }) => {
                   onClick={() => onAcceptCookies()}
                   className="btn is-primary"
                 >
-                  Accept
+                  Accepter
                 </button>
               </div>
             </div>

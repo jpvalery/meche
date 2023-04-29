@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import {
-  ProductCounter,
-  ProductAdd,
-  ProductWaitlist,
+  ProductAdd, ProductCounter, ProductWaitlist
 } from '@components/product'
 
 const ProductActions = ({ activeVariant, klaviyoAccountID }) => {
@@ -24,7 +22,7 @@ const ProductActions = ({ activeVariant, klaviyoAccountID }) => {
             quantity={quantity}
             className="btn is-primary is-large is-block"
           >
-            Add To Cart
+            Ajouter au panier
           </ProductAdd>
         </>
       ) : (
@@ -36,7 +34,7 @@ const ProductActions = ({ activeVariant, klaviyoAccountID }) => {
             />
           ) : (
             <div className="btn is-large is-disabled is-block">
-              Out of Stock
+              En rupture de stock
             </div>
           )}
         </>

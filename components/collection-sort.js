@@ -1,4 +1,3 @@
-import React from 'react'
 
 import Listbox from '@components/listbox'
 
@@ -15,7 +14,7 @@ const CollectionSort = ({ sortOptions, activeSort, onChange }) => {
         before={
           <>
             <span className="collection-sort--icon"></span>
-            <span className="collection-sort--title">Sort:</span>
+            <span className="collection-sort--title">Trier:</span>
           </>
         }
       />

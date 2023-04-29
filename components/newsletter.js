@@ -186,7 +186,7 @@ const Newsletter = ({ data = {} }) => {
             className="form--error"
           >
             <div className="form--error-content">
-              {errorMsg ? <BlockContent blocks={errorMsg} /> : <h2>Error!</h2>}
+              {errorMsg ? <BlockContent blocks={errorMsg} /> : <h2>Erreur!</h2>}
               <p className="form--error-reset">
                 <button className="btn" onClick={(e) => resetForm(e)}>
                   Essayons encore

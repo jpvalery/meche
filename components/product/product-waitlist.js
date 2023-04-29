@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
 import axios from 'axios'
+import { AnimatePresence, m } from 'framer-motion'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { m, AnimatePresence } from 'framer-motion'
 
 const Waitlist = ({ variant, klaviyo }) => {
   const [submitting, setSubmitting] = useState(false)
@@ -151,7 +151,7 @@ const Waitlist = ({ variant, klaviyo }) => {
             className="form--success"
           >
             <div className="form--success-content">
-              Thanks! We'll be in touch.
+              Merci! On t'en donne des nouvelles!
             </div>
           </m.div>
         )}
@@ -165,10 +165,10 @@ const Waitlist = ({ variant, klaviyo }) => {
             variants={formAnim}
             className="form--error"
           >
-            <div className="form--error-content">Yikes. That didn’t work!</div>
+            <div className="form--error-content">Oups! Quelque chose n'a pas fonctionné</div>
             <div className="form--error-reset">
               <button className="btn" onClick={(e) => resetForm(e)}>
-                Try Again
+                Réessayer
               </button>
             </div>
           </m.div>

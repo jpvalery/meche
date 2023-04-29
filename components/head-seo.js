@@ -1,6 +1,5 @@
-import React from 'react'
-import Head from 'next/head'
 import { imageBuilder } from '@lib/sanity'
+import Head from 'next/head'
 
 const HeadSEO = ({ site = {}, page = {}, schema }) => {
   // set <head> variables
@@ -52,7 +51,7 @@ const HeadSEO = ({ site = {}, page = {}, schema }) => {
         />
       )}
 
-      <link rel="preconnect" href="https://hull-demo.myshopify.com" />
+      <link rel="preconnect" href="https://checkout.meche.ca" />
       <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
 
       <title>{metaTitle}</title>

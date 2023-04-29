@@ -1,9 +1,8 @@
-import React from 'react'
 
+import Icon from '@components/icon'
+import Menu from '@components/menu'
 import Newsletter from '@components/newsletter'
 import ThemeSwitch from '@components/theme-switch'
-import Menu from '@components/menu'
-import Icon from '@components/icon'
 
 const Footer = ({ data = {} }) => {
   const { blocks } = data
@@ -44,7 +43,7 @@ const Footer = ({ data = {} }) => {
                 <ThemeSwitch />
 
                 <div className="footer--disclaimer">
-                  <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+                  <p>&copy; {new Date().getFullYear()}. Tous droits réservés.</p>
                 </div>
               </div>
             )}

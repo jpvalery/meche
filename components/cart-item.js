@@ -1,9 +1,8 @@
-import React from 'react'
 import Link from 'next/link'
 
 import { hasObject } from '@lib/helpers'
 
-import { useUpdateItem, useRemoveItem, useToggleCart } from '@lib/context'
+import { useRemoveItem, useToggleCart, useUpdateItem } from '@lib/context'
 
 import Photo from '@components/photo'
 import { ProductCounter, ProductPrice } from '@components/product'
@@ -74,7 +73,7 @@ function CartItem({ item }) {
             onClick={() => removeItem(item.lineID)}
             className="btn is-text"
           >
-            Remove
+            Supprimer
           </button>
         </div>
       </div>
