@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
-import FocusTrap from 'focus-trap-react'
-import { m } from 'framer-motion'
 import { useRect } from '@reach/rect'
 import cx from 'classnames'
+import FocusTrap from 'focus-trap-react'
+import { m } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
-import { isBrowser } from '@lib/helpers'
 import { swipeAnim } from '@lib/animate'
+import { isBrowser } from '@lib/helpers'
 
 import { useSiteContext, useToggleMegaNav } from '@lib/context'
 
@@ -79,7 +79,7 @@ const MegaNavigation = ({ items = [], headerHeight }) => {
                       {dropdown.featured && (
                         <div className="mega-item--featured">
                           <div className="mega-item--featured-title">
-                            <span>Featured</span>
+                            <span>La sélection de la maison</span>
                           </div>
                           <FeaturedProducts
                             products={dropdown.featured}

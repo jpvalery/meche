@@ -20,33 +20,32 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
 
         <div className="product--details">
           <div className="product--info">
-            <div className="product--header">
-              <div className="product--title">
-                <h1 className="product--name">{product.title}</h1>
-              </div>
+            <div className="product--title">
+              <h1 className="product--name">{product.title}</h1>
+            </div>
 
+            <div className="product--header">
               <div className="product--price-stock">
                 <div className="flex items-center mt-4">
-                  {activeVariant.inStock && !activeVariant.lowStock && (
-                    <span className="label">In Stock</span>
-                  )}
-                  {activeVariant.lowStock && (
-                    <span className="label is-active">Low Stock</span>
-                  )}
+                  <ProductPrice
+                    price={activeVariant?.price || product.price}
+                    comparePrice={
+                      activeVariant?.comparePrice || product.comparePrice
+                    }
+                  />
 
+                  {activeVariant.inStock && !activeVariant.lowStock && (
+                    <span className="label">En inventaire</span>
+                  )}
+                  {activeVariant.inStock && activeVariant.lowStock && (
+                    <span className="label is-active">Inventaire bas</span>
+                  )}
                   {!activeVariant.inStock && (
                     <span className="label is-secondary is-active">
-                      Out of Stock
+                      Rupture d'inventaire
                     </span>
                   )}
                 </div>
-
-                <ProductPrice
-                  price={activeVariant?.price || product.price}
-                  comparePrice={
-                    activeVariant?.comparePrice || product.comparePrice
-                  }
-                />
               </div>
             </div>
 
