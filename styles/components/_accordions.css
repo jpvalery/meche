@@ -8,7 +8,7 @@
   @apply w-full max-w-prose border-t;
   
   &--toggle {
-    @apply clean-btn text-left flex justify-between items-center px-0 py-16 w-full bg-transparent font-semibold text-18 leading-135;
+    @apply clean-btn text-left flex justify-between items-center px-0 py-16 w-full bg-transparent font-semibold text-24 leading-135;
   }
 
   &--icon {
