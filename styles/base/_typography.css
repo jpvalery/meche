@@ -154,6 +154,7 @@ h1,
   }
 
   .hero & {
+    @apply drop-shadow-[0_4px_4px_rgba(0,0,0,0.6)];
     font-size: clamp(
       4rem,
       calc(1.5rem + 3.5vw),
@@ -166,6 +167,10 @@ h2,
 .is-h2 {
   &:not(:last-child) {
     @apply mb-16;
+  }
+
+  .hero & {
+    @apply drop-shadow-[0_3px_3px_rgba(0,0,0,0.3)];
   }
 }
 
