@@ -1,9 +1,10 @@
-
-import BlockContent from '@components/block-content';
+import BlockContent from "@components/block-content";
 import {
-  ProductActions, ProductForm, ProductGallery,
-  ProductPrice
-} from '@components/product';
+  ProductActions,
+  ProductForm,
+  ProductGallery,
+  ProductPrice,
+} from "@components/product";
 
 const ProductHero = ({ product, activeVariant, onVariantChange }) => {
   return (
@@ -33,13 +34,17 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
                       activeVariant?.comparePrice || product.comparePrice
                     }
                   />
-
+                  {product.title == "Carte-Cadeau" && (
+                    <span className="label">En inventaire</span>
+                  )}
                   {activeVariant.inStock && !activeVariant.lowStock && (
                     <span className="label">En inventaire</span>
                   )}
-                  {activeVariant.inStock && activeVariant.lowStock && (
-                    <span className="label is-active">Inventaire bas</span>
-                  )}
+                  {product.title != "Carte-Cadeau" &&
+                    activeVariant.inStock &&
+                    activeVariant.lowStock && (
+                      <span className="label is-active">Inventaire limité</span>
+                    )}
                   {!activeVariant.inStock && (
                     <span className="label is-secondary is-active">
                       Rupture d'inventaire
@@ -71,6 +76,6 @@ const ProductHero = ({ product, activeVariant, onVariantChange }) => {
       </div>
     </section>
   );
-}
+};
 
-export default ProductHero
+export default ProductHero;
