@@ -187,7 +187,7 @@
   }
 
   .price {
-    @apply flex items-center justify-center;
+    @apply flex items-center justify-center text-20;
 
     &--current {
       @apply sm:text-24 sm:leading-150 font-semibold;
