@@ -62,16 +62,16 @@ a[href="#content"].skip-link {
   @apply flex flex-col relative z-1;
 
   &--link {
-    @apply clean-btn block p-8 bg-transparent;
+    @apply clean-btn block p-8 pb-12 bg-transparent;
 
     svg {
-      @apply block fill-current w-auto h-48;
+      @apply block fill-current w-auto h-30 md:h-48;
     }
   }
 }
 
 .menu-toggle {
-  @apply sm:hidden absolute inset-y-0 left-0 z-6 clean-btn p-15 bg-transparent;
+  @apply sm:hidden absolute inset-y-0 left-0 z-6 clean-btn p-10 bg-transparent;
 
   .is-overlay:not(.has-bg) & {
     @apply transition-colors duration-300;
@@ -146,11 +146,11 @@ a[href="#content"].skip-link {
 }
 
 .cart-toggle {
-  @apply clean-btn flex items-center relative bg-transparent -mr-8 p-8 font-semibold uppercase;
+  @apply clean-btn flex items-center relative bg-transparent p-8 font-semibold uppercase;
   font: inherit;
 
   &--count {
-    @apply flex flex-col justify-center relative w-32 h-32 ml-8 rounded-full bg-transparent border border-current text-current text-14 font-bold leading-160;
+    @apply flex flex-col justify-center relative w-24 h-24 md:w-32 md:h-32 ml-8 rounded-full bg-transparent border border-current text-current text-14 font-bold leading-160;
 
     &.is-active {
       @apply border-pageText bg-pageText text-pageBG;
@@ -255,6 +255,6 @@ a[href="#content"].skip-link {
   }
 
   .cart-toggle {
-    @apply mx-8 p-8 text-14 leading-150 font-semibold uppercase;
+    @apply text-14 leading-150 font-semibold uppercase;
   }
 }
