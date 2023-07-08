@@ -1,35 +1,61 @@
-import Head from 'next/head';
+import React from 'react'
+import Error from 'next/error'
 
-import Logo from '@/components/logo';
+import { getStaticPage, queries } from '@data'
 
-export default function Home() {
-	return (
-		<>
-			<Head>
-				<title>meche.ca</title>
-				<meta
-					name="description"
-					content="Bougies faites à la main au Québec"
-					key="desc"
-				/>
-				<meta property="og:title" content="meche.ca" />
-				<meta
-					property="og:description"
-					content="Bougies faites à la main au Québec"
-				/>
-			</Head>
-			<main className="min-h-screen p-44">
-				<div className="grid grid-flow-row items-center justify-center gap-8">
-					<Logo className="text-stone-950" />
-					<div className="grid grid-flow-row items-center justify-center text-lg">
-						<p className="uppercase text-center">
-							Bougies faites à la main au Québec
-						</p>
-						<p className="uppercase text-center">100% cire de Soja</p>
-						<p className="uppercase text-center">Naturelle & biodégradable</p>
-					</div>
-				</div>
-			</main>
-		</>
-	);
+import Layout from '@components/layout'
+import { Module } from '@components/modules'
+
+const Home = ({ data }) => {
+  const { site, page } = data
+
+  if (!page) {
+    return (
+      <Error
+        title={`"Home Page" is not set in Sanity, or the page data is missing`}
+        statusCode="Data Error"
+      />
+    )
+  }
+
+  return (
+    <Layout site={site} page={page}>
+      {page.modules?.map((module, key) => (
+        <Module key={key} index={key} data={module} />
+      ))}
+    </Layout>
+  )
 }
+
+export async function getStaticProps({ preview, previewData }) {
+  const pageData = await getStaticPage(
+    `
+    *[_type == "page" && _id == ${queries.homeID}] | order(_updatedAt desc)[0]{
+      "id": _id,
+      hasTransparentHeader,
+      modules[]{
+        defined(_ref) => { ...@->content[0] {
+          ${queries.modules}
+        }},
+        !defined(_ref) => {
+          ${queries.modules},
+        }
+      },
+      title,
+      seo
+    }
+  `,
+    {
+      active: preview,
+      token: previewData?.token,
+    }
+  )
+
+  return {
+    props: {
+      data: pageData,
+    },
+  }
+}
+
+export default Home

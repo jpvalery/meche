@@ -1,13 +1,24 @@
-import { Head, Html, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-export default function Document() {
-	return (
-		<Html lang="en">
-			<Head />
-			<body className="text-stone-950 bg-stone-300">
-				<Main />
-				<NextScript />
-			</body>
-		</Html>
-	);
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx)
+
+    return { ...initialProps }
+  }
+
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <NextScript />
+          <div id="drawer" />
+        </body>
+      </Html>
+    )
+  }
 }
+
+export default MyDocument
